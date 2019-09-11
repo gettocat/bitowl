@@ -1,0 +1,30 @@
+{
+    "name": "bitowl",
+    "version": "0.0.1",
+    "description": "binary object notation with version control, small and compact for network communication with diff model and version control implementation",
+    "main": "index.js",
+    "bin": "",
+    "tests": "./_tests/",
+    "dependencies": {
+        "bitpony": "0.0.1"
+    },
+    "author": "Nanocat (@gettocat) <alex@letris.ru>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/gettocat/bitowl/issues"
+    },
+    "homepage": "https://github.com/gettocat/bitowl",
+    "keywords": [
+        "data",
+        "version control",
+        "blockchain",
+        "network communication",
+        "binary object notation",
+        "bit operations",
+        "json in binary"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gettocat/bitowl"
+    }
+}
