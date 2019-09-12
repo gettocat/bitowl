@@ -185,21 +185,40 @@ bitowl.getType = function (buffer) {
 }
 
 bitowl.applyDiff = function (diff, source) {
-    let version = bitowl.getType(diff);
+
+    let diff_ = diff;
+    if (diff instanceof Buffer || typeof diff == 'string')
+        diff_ = bitowl.unpack(diff).value;
+
+    let source_ = source;
+    if (source instanceof Buffer || typeof source == 'string')
+        source_ = bitowl.unpack(source).value;
+
+
+    let version = bitowl.getType(diff_);
     if (version < constants.VERSION_VERSIONCONTROL) {
         throw new Error('Apply can only diff object');
     }
 
-    return vc.applyDiff(diff, source);
+    return vc.applyDiff(diff_, source_);
 }
 
 bitowl.createDiff = function (target, source) {
-    let version = bitowl.getType(source);
+
+    let target_ = target;
+    if (target instanceof Buffer || typeof target == 'string')
+        target_ = bitowl.unpack(target).value;
+
+    let source_ = source;
+    if (source instanceof Buffer || typeof source == 'string')
+        source_ = bitowl.unpack(source).value;
+
+    let version = bitowl.getType(source_);
     if (version >= constants.VERSION_VERSIONCONTROL) {
-        let source_ = vc.applyDiff(source, {});
-        return vc.createDiff(target, source_);
+        let source__ = vc.applyDiff(source_, {});
+        return vc.createDiff(target_, source__);
     } else {
-        return vc.createDiff(target, source);
+        return vc.createDiff(target_, source_);
     }
 }
 

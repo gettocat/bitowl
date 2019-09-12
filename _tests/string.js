@@ -247,3 +247,16 @@ console.log('apply diff(add+rem+update)', a = str.applyDiff([{ flag: 'A', sequen
 { flag: 'U', sequence: 'sdgb', start: 9, length: 4 },
 { flag: 'A', sequence: '5', start: 13, length: 1 },
 { flag: 'U', sequence: '8', start: 16, length: 1 }], "12045tyu6799") == '12dsfsd04sdgb56789');
+
+
+console.log(str.pack([ { flag: 'A', sequence: 'a', start: 0, length: 1 },
+{ flag: 'U', sequence: 'o', start: 2, length: 1 },
+{ flag: 'U', sequence: '54', start: 5, length: 2 },
+{ flag: 'U', sequence: '12', start: 8, length: 2 },
+{ flag: 'D', sequence: '44', start: 10, length: 3 } ]));
+
+console.log(str.createDiff('atost54312','test12345444'),str.applyDiff([ { flag: 'A', sequence: 'a', start: 0, length: 1 },
+{ flag: 'U', sequence: 'o', start: 2, length: 1 },
+{ flag: 'U', sequence: '54', start: 5, length: 2 },
+{ flag: 'U', sequence: '12', start: 8, length: 2 },
+{ flag: 'D', sequence: '44', start: 10, length: 3 } ], 'test12345444'));
